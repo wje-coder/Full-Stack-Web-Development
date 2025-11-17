@@ -1,0 +1,67 @@
+-- create the user table using the following:
+
+CREATE TABLE users1(
+   userid INT NOT NULL AUTO_INCREMENT,   
+   username VARCHAR(50),   
+   password VARCHAR(50), 
+   firstname VARCHAR(50),
+   lastname VARCHAR(50),
+   salary FLOAT,
+   age INTEGER,
+   registerday DATE,
+   signintime DATETIME，
+   PRIMARY KEY (userid),
+   UNIQUE KEY(username)
+)
+
+--registration:
+
+INSERT INTO users(username, password, firstname, lastname, salary, age, registerday, signintime)
+    VALUES ("Haha", "Haha", "Haaa", 60000, 22, ?, ?);
+
+--login
+
+SELECT * FROM users WHERE username = "Haha" AND password = 111111;
+
+--search users by first and/or last name:
+
+SELECT *
+FROM users
+WHERE firstname LIKE 'Johny';
+
+--search users by userid:
+
+SELECT *
+FROM users
+WHERE userid = 2;
+
+--search all users whose salary is between 50000 and 10000:
+
+SELECT *
+FROM users
+WHERE salary BETWEEN 50000 AND 100000;
+
+--Search all users whose ages are between 25 and 40:
+
+SELECT *
+FROM users
+WHERE age BETWEEN 25 AND 40;
+
+--Search users who registered after john registered:
+
+ SELECT * FROM Users
+ WHERE registerday > (SELECT registerday FROM Users WHERE firstname = 'John' LIMIT 1;
+
+-- search users who never signed in:
+
+SELECT * FROM Users WHERE signintime IS NULL;
+
+-- Search users who registered on the same day that john registered:
+
+SELECT * FROM Users
+WHERE registerday = (SELECT registerday FROM Users WHERE firstname = 'John' LIMIT 1;
+
+-- Return the users who registered today:
+
+SELECT * FROM Users WHERE registerday = CURDATE();
+
